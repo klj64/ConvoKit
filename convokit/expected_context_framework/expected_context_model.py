@@ -594,7 +594,7 @@ class ExpectedContextModel:
         return self._snip(utt_vects * self.term_reprs_full / self.context_s, self.snip_first_dim)
 
     def compute_utt_ranges(self, utt_vects):
-        return np.dot(normalize(utt_vects, norm="l1"), self.term_ranges)
+        return np.dot(normalize(np.array(utt_vects), norm="l1"), self.term_ranges)
 
     def transform_context_utts(self, context_utt_vects):
         return self._snip(context_utt_vects * self.context_V / self.context_s, self.snip_first_dim)
@@ -761,7 +761,7 @@ class ExpectedContextModel:
     def _snip(self, vects, snip_first_dim=True, dim=None):
         if dim is None:
             dim = vects.shape[1]
-        return normalize(vects[:, int(snip_first_dim) : dim])
+        return normalize(np.array(vects[:, int(snip_first_dim) : dim]))
 
 
 class ClusterWrapper:
