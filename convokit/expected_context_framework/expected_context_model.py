@@ -705,10 +705,14 @@ class ExpectedContextModel:
         self.context_s = np.load(os.path.join(dirname, "context_s.npy"), allow_pickle=True)
         self.context_terms = np.load(os.path.join(dirname, "context_terms.npy"), allow_pickle=True)
         self.terms = np.load(os.path.join(dirname, "terms.npy"), allow_pickle=True)
-        self.term_reprs_full = np.matrix(np.load(os.path.join(dirname, "term_reprs.npy"), allow_pickle=True))
+        self.term_reprs_full = np.matrix(
+            np.load(os.path.join(dirname, "term_reprs.npy"), allow_pickle=True)
+        )
         self.term_reprs = self._snip(self.term_reprs_full, self.snip_first_dim)
         self.term_ranges = np.load(os.path.join(dirname, "term_ranges.npy"), allow_pickle=True)
-        self.train_utt_reprs = np.load(os.path.join(dirname, "train_utt_reprs.npy"), allow_pickle=True)
+        self.train_utt_reprs = np.load(
+            os.path.join(dirname, "train_utt_reprs.npy"), allow_pickle=True
+        )
 
         try:
             km_obj = ClusterWrapper(self.n_clusters)
